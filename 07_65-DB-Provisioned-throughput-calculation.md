@@ -37,3 +37,16 @@ It is always rounded up, if the results get you a fraction, remember that!
 ## Error codes
 * HTTP 400 - ProvisionedThroughputExceededException
 * You exceeded your maximum allowed provisioned throughput for a table or for one or more global secondary indexes.
+
+
+
+# Question
+You have a motion sensor which writes 300 items of data every 30 seconds. Each item consists of 5kb. Your application uses eventually consistent reads. What should you set the read throughput to?
+
+
+
+
+
+# Answer
+
+300 / 30 = 10 items per second. 5kb rounded to nearest 4kb chunk is 8kb. 8 / 4 = 2. This means you need 2 reads per item. 2 x 10 = 20 reads per second. As the reads are EVENTUALLY consistent, 20 / 2 = 10.
